@@ -1,0 +1,22 @@
+{
+  "name": "@lyfnsmile/util",
+  "version": "1.0.0",
+  "description": "a collection of userful function in daily day",
+  "main": "util.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyfnsmile/util.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lyfnsmile/util/issues"
+  },
+  "homepage": "https://github.com/lyfnsmile/util#readme",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
