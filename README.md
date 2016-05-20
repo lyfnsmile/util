@@ -46,7 +46,6 @@ visibility和display都可以用来设置元素隐藏，二者区别就是visibi
 ### 部分可见overflow和clip
 - overflow属性一般很简单，无需多言
 - clip属性不常用，被用于指定元素的裁剪区域，在css2中，裁剪区域是矩形的。语法如下：
-
     rect(top,right,bottom,left)
 
 例如:
@@ -66,3 +65,12 @@ style="clip:rect(auto 100px auto auto);"
 ```javascript
 element.style.cssFloat="left";
 ```
+
+> 字符串类型数字转纯数字的方法 
+
+```
+function toNumber(strNum){
+    return +strNum;
+}
+```
+- 通常做法有调用Number(), parseInt(), parseFloat()方法实现
