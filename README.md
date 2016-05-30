@@ -8,6 +8,41 @@ a collection of userful function in daily day
 
 [TOC]
 
+### HTTP消息头
+#### general
+- Connection 这个消息头用于告诉通信的另一端，在完成 HTTP 传输后是关闭 TCP 连接，还是保持连接开放以接收其他消息
+- Content-Encoding 这个消息头为消息主体中的内容指定编码形式（如 gzip），一些应用程序使用它来压缩响应以加快传输速度
+- Content-Length 这个消息头用于规定消息主体的字节长度。（HEAD语法的响应例外，它在对应的 GET请求的响应中指出主体的长度。）
+- Content-Type 这个消息头用于规定消息主体的内容类型。例如，HTML文档的内容类型为 text/html。
+- Transfer-Encoding。这个消息头指定为方便其通过 HTTP 传输而对消息主体使用的任何编码。如果使用这个消息头，通常用它指定块编码。
+
+#### Request Headers
+
+- Accept 这个消息头用于告诉服务器客户端愿意接受哪些内容，如图像类型、办公文档格式等。
+- Accept-Encoding 这个消息头用于告诉服务器，客户端愿意接收哪些内容编码。
+- Authorization 这个消息头用于为一种内置 HTTP 身份验证向服务器提交证书。
+- Cookie 这个消息头用于向服务端提交它以前发布的 cookie。
+- Host 这个消息头用于指定出现在所有请求的完整 Url 中得主机名称。
+- If-Modified-Since 这个消息头用于说明浏览器最后一次收到请求的资源的时间。如果自那以后资源没有发生变化，服务器就会发出一个带状态304的响应，指示客户端使用资源的缓存副本。
+- If-None-Match 这个消息头用于指定一个实体标签。实体标签是一个说明消息主题内容的标识符。当最后一次收到请求的资源时，浏览器提交服务器的实体标签。服务器可以使用实体标签确定浏览器是否使用资源的缓存副本。
+- Origin 这个消息头用在跨域 Ajax 请求中，用于指示提出请求的域。
+- Referer 这个消息头用于指示提出当前请求的原始 url。
+- User-Agent 这个消息头提供与浏览器或生成请求的其他客户端软件。
+
+#### Response Headers
+
+- Access-Control-Allow-Origin 这个消息头用于指示可否通过跨域 Ajax 请求获取资源。
+- Cache-Control .这个消息头用于向浏览器传送缓存指令（如no-cache）.
+- ETag 这个消息头用于指定一个实体标签。客户端可在将来的请求中提交这个标识符，获得和 
+- If-None-Match 消息头中相同的资源，通知服务器浏览器当前缓存中保存的是哪个版本的资源。
+- Expires 用于向浏览器说明消息主体内容的有效时间。在这个时间之前，浏览器可以使用这个资源的缓存副本。
+- Location 用于在重定向响应（这些状态码以3开头的响应）中说明重定向的目标。
+- Pragma 用于向浏览器传送缓存指定
+- Server 提供所使用的 Web 服务器软件的相关信息。
+- Set-Cookie 用于向浏览器发布 cookie，浏览器会在随后的请求中将其返回给服务器。
+- WWW-Authenticate 用在带401状态码的响应中，提供与服务器所支持的身份验证类型有关的信息。
+- X-Frame-Options 只是浏览器框架是否及如何加载当前响应。 
+
 
 ### 可编辑内容区域  `只需在标签上添加contenteditable属性`
 ```html
