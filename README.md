@@ -109,3 +109,83 @@ function toNumber(strNum){
 }
 ```
 - 通常做法有调用Number(), parseInt(), parseFloat()方法实现
+
+### JavaScript之URL
+- scheme://host:port/path?query#fragment
+
+
+- scheme:通信协议，常用的http,ftp,maito等。
+- host:主机，服务器(计算机)域名系统 (DNS) 主机名或 IP 地址。
+- port:端口号，整数，可选，省略时使用方案的默认端口，如http的默认端口为80。
+- path:路径，由零或多个"/"符号隔开的字符串，一般用来表示主机上的一个目录或文件地址。
+- query:查询，可选，用于给动态网页（如使用CGI、ISAPI、PHP/JSP/ASP/ASP.NET等技术制作的网页）传递参数，可有多个参数，用"&"符号隔开，每个参数的名和值用"="符号隔开。
+- fragment:信息片断，字符串，用于指定网络资源中的片断。例如一个网页中有多个名词解释，可使用fragment直接定位到某一名词解释。(也称为锚点)
+
+现在举个 url 栗子，来说明下面的用法。
+栗子：
+[http://www.google.com:8080/maps?id=abc&ok=true](http://www.google.com/maps?id=abc&ok=true)
+
+- window.location.href
+获取的是整个url "http://www.google.com/maps?id=abc&ok=true"
+
+- window.location.protocol
+获取的是协议部分 "http:"
+
+- window.location.host
+获取的是host "www.google.com"
+
+- window.location.port
+获取的是port "8080"
+
+- window.location.pathname
+获取的是路径名字 "/maps"
+
+- window.location.search
+获取的是参数部分 "?id=1&ok=true"
+
+- window.location.hash
+获取的是哈希值 "#abc"
+
+
+#### 设置 url
+- window.location.href
+用法： window.location.href="http://www.google.com/";
+实现更改url并且跳转。
+
+- window.histroy.pushState()
+更改url但是不跳转
+用法：
+
+```
+var json={time:new Date().getTime()};
+// @状态对象：记录历史记录点的额外对象，可以为空
+// @页面标题：目前所有浏览器都不支持
+// @可选的url：浏览器不会检查url是否存在，只改变url，url必须同域，不能跨域
+window.history.pushState(json,"","http://www.google.com/maps");
+执行了pushState方法后，页面的url地址为http://www.google.com/maps
+```
+
+- 锚点(hash)改变时会触发hashchange事件
+
+`很多SPA的router就是根据hash改变时触发hashchange事件更新view的`
+
+#### 从url中获取查询字符串参数
+```javascript
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        if (str.indexOf("&") != -1) {
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+            }
+        } else {
+            theRequest[str.split("=")[0]] = decodeURI(str.split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+```
