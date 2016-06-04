@@ -110,6 +110,9 @@ function toNumber(strNum){
 ```
 - 通常做法有调用Number(), parseInt(), parseFloat()方法实现
 
+- Object.assign(target，...soure)函数可以将所有的源对象属性复制到目标对象并返回。
+
+
 ### JavaScript之URL
 - scheme://host:port/path?query#fragment
 
