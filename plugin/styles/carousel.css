@@ -1,0 +1,42 @@
+#container{
+	width: 800px;
+	height: 420px;
+	margin: 40px auto;
+	overflow: hidden;
+}
+
+#container .carousel{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+#container .carousel .warp{
+	position: absolute;
+}
+
+#container .carousel .warp img{
+	float: left;
+	width: 800px;
+	height: 480px;
+}
+.menu{
+    position: absolute;
+    bottom: 20px;
+    width: 90px;
+    left: 50%;
+    margin-left: -45px;
+}
+.menu li {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: 0 5px;
+    z-index: 99;
+    float: left;
+    cursor: pointer;
+}
+
+#container li.active {
+    background: #e00;
+}
