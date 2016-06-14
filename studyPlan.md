@@ -1,0 +1,5 @@
+- jQuery extend()方法原理
+- html5之touch事件
+- promise规范及实现
+- ES6
+- 多种姿势文件上传

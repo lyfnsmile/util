@@ -16,7 +16,6 @@
                 <li><img src="./images/2.jpg" alt=""></li>
                 <li><img src="./images/3.jpg" alt=""></li>
                 <li><img src="./images/4.jpg" alt=""></li>
-                <li><img src="./images/1.jpg" alt=""></li>
             </ul>
         </div>
     </div>
@@ -36,32 +35,37 @@ window.onload = function() {
     var autotimer = null;
 
     var container = document.getElementById("container");
-    var carousel=container.getElementsByClassName("carousel")[0];
+    var carousel = container.getElementsByClassName("carousel")[0];
     var warp = container.getElementsByClassName("warp")[0];
+    var Li = warp.getElementsByTagName("li")[0];
     var imgs = warp.getElementsByTagName('img');
+
+    warp.appendChild(Li.cloneNode(true));
 
     //创建index
     var indexHtml = document.createElement("ul");
-    var str='';
-    for (var i = 0; i < imgs.length-1; i++) {
+    var str = '';
+    for (var i = 0; i < imgs.length - 1; i++) {
         str += "<li></li>";
     };
 
-    indexHtml.innerHTML=str;
-    indexHtml.className="menu";
+    indexHtml.innerHTML = str;
+    indexHtml.className = "menu";
 
     carousel.appendChild(indexHtml);
 
+    var imageWidth = parseInt(getStyle(container, "width"));
+
     //设置ul的宽度
-    warp.style.width = (imgs.length) * parseInt(getStyle(container, "width")) + "px";
+    warp.style.width = (imgs.length) * imageWidth + "px";
 
-    var autotimer=null;
-    var timer=null;
-    var menu=container.getElementsByClassName("menu")[0];
-    var menu_li=menu.getElementsByTagName('li');
-    var start=0;
+    var autotimer = null;
+    var timer = null;
+    var menu = container.getElementsByClassName("menu")[0];
+    var menu_li = menu.getElementsByTagName('li');
+    var start = 0;
 
-    menu_li[0].className="active";
+    menu_li[0].className = "active";
 
     autoPlay(start);
 
@@ -69,12 +73,12 @@ window.onload = function() {
         clearInterval(autotimer);
         var i = start;
         autotimer = setInterval(function() {
-        	i++;
+            i++;
             play(i);
-            
-            if (i == imgs.length-1) {
+
+            if (i == imgs.length - 1) {
                 i = 0;
-        		
+
             }
             menu_li[i].className = 'active';
 
@@ -82,29 +86,27 @@ window.onload = function() {
     };
 
     function play(i) {
-    	console.log(i)
         clearInterval(timer);
 
         var target = -i * parseInt(getStyle(container, "width"));
-        for(var k=0; k<menu_li.length; k++){
-        	if(menu_li[k].className==="active"){
-        		menu_li[k].className="";
-        	}
+        for (var k = 0; k < menu_li.length; k++) {
+            if (menu_li[k].className === "active") {
+                menu_li[k].className = "";
+            }
         }
-        
+
         timer = setInterval(function() {
             var speed = (target - warp.offsetLeft) / 10;
             speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
             if (warp.offsetLeft == target) {
                 clearInterval(timer);
             }
-            console.log(warp.offsetLeft)
             warp.style.left = warp.offsetLeft + speed + 'px';
-            
+
         }, 20);
         //动画完成之后的回调
-        if(warp.offsetLeft==-3200){
-        	warp.style.left=0;
+        if (warp.offsetLeft == -(imgs.length - 1) * imageWidth) {
+            warp.style.left = 0;
         }
 
     };

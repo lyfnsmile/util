@@ -65,7 +65,7 @@ function shake(ele, fn, distance, time) {
 获取浏览器视口高度，滚动条高度以及整个文档高度
 判断滚动条到达底部的方法
 实现滚动到底部加载更多的效果
- */
+*/
 
 function getScrollTop() {　　
     var scrollTop = 0,
