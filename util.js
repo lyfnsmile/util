@@ -309,3 +309,4 @@ function hasClass(element,className){
 function remove(element) {
     element.parentNode.removeChild(element);
 }
+
