@@ -268,3 +268,12 @@ if (!s.match(/^[a-zA-Z]+:\\/\\//)){
 
 20、匹配HTML标签
 <\\/?\\w+((\\s+\\w+(\\s*=\\s*(?:".*?"|'.*?'|[\\^'">\\s]+))?)+\\s*|\\s*)\\/?>
+
+### 弹窗组件开发注意点:
+当Dialog弹框出现的时候，根元素overflow:hidden.
+
+此时，由于页面滚动条从有到无，页面会晃动，这样糟糕的体验显然是不能容忍了对<body>元素进行处理，右侧增加一个滚动条宽度（假设宽度是widthScrollbar）的透明边框。
+```
+$(document.body).css("border-right":widthScrollbar+"px solid transparent")
+```
+Dialog隐藏的时候再把滚动条放开。
